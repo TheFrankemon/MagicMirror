@@ -8,7 +8,7 @@
 Module.register("clock",{
 	// Module config defaults.
 	defaults: {
-		displayType: "digital", // options: digital, analog, both
+		displayType: "analog", // options: digital, analog, both
 
 		timeFormat: config.timeFormat,
 		displaySeconds: true,
@@ -20,10 +20,10 @@ Module.register("clock",{
 		dateFormat: "dddd, LL",
 
 		/* specific to the analog clock */
-		analogSize: "200px",
+		analogSize: "70px",
 		analogFace: "simple", // options: 'none', 'simple', 'face-###' (where ### is 001 to 012 inclusive)
 		analogPlacement: "bottom", // options: 'top', 'bottom', 'left', 'right'
-		analogShowDate: "top", // options: false, 'top', or 'bottom'
+		analogShowDate: "bottom", // options: false, 'top', or 'bottom'
 		secondsColor: "#888888",
 		timezone: null,
 	},
@@ -64,7 +64,7 @@ Module.register("clock",{
 		var periodWrapper = document.createElement("span");
 		var weekWrapper = document.createElement("div")
 		// Style Wrappers
-		dateWrapper.className = "date normal medium";
+		dateWrapper.className = "date normal small";
 		timeWrapper.className = "time bright large light";
 		secondsWrapper.className = "dimmed";
 		weekWrapper.className = "week dimmed medium"

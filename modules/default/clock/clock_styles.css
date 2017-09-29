@@ -1,7 +1,7 @@
 .clockCircle {
   margin: 0;
   position: relative;
-  border-radius: 50%;
+  border-radius: 10%;
   background-size: 100%;
 }
 
