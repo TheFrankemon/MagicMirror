@@ -28,6 +28,10 @@ var config = {
 	    {
 	    	module: 'MMM-SimpleLogo',
 	    	position: 'top_bar'
+	    },
+	    {
+		module: 'MMM-Keyboard',
+		position: 'lower_third'
 	    }
 	]
 };
