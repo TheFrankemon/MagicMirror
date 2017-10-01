@@ -10,7 +10,7 @@ Module.register("MMM-Keyboard", {
 		return [
 			this.file('Keyboard/docs/js/jquery-latest.min.js'),
 			this.file('Keyboard/docs/js/jquery-ui.min.js'),
-			this.file('Keyboard/js/jquery.keyboard.js')
+			this.file('Keyboard/js/jquery.keyboard.js'),
 			this.file('Keyboard/docs/js/demo.js')
 		];
 	},
