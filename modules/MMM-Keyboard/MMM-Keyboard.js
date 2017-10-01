@@ -23,7 +23,17 @@ Module.register("MMM-Keyboard", {
 
 	start: function() {
 		jQuery(function($) {
-			$('#keyboard').keyboard({layout: 'qwerty'});
+			$('#keyboard').keyboard({
+				layout: 'custom',
+				customLayout: {
+					'default': [
+						"q w e r t y u i o p {bksp}",
+						"a s d f g h j k l \u00f1 \u0301",
+						"z x c v b n m , . -",
+						"{accept} {space} {cancel}"
+					]
+				}
+			});
 		});
 		Log.log('jQuery Keyboard successfully loaded!');
 	},

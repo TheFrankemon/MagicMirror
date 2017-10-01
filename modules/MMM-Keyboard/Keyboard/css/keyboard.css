@@ -35,7 +35,7 @@
 	clear: left;
 }
 .ui-keyboard-space {
-	width: 15em;
+	width: 10em;
 }
 /* see http://nicolasgallagher.com/another-css-image-replacement-technique/ */
 .ui-keyboard-space span, .ui-keyboard-empty span {
