@@ -8,14 +8,16 @@ Module.register("MMM-Keyboard", {
 
 	getScripts: function() {
 		return [
-			this.file('jquery.min.js'),
+			this.file('Keyboard/docs/js/jquery-latest.min.js'),
+			this.file('Keyboard/docs/js/jquery-ui.min.js'),
 			this.file('Keyboard/js/jquery.keyboard.js')
+			this.file('Keyboard/docs/js/demo.js')
 		];
 	},
 
 	getStyles: function () {
 		return [
-			this.file('css/jquery-ui.css'),
+			this.file('Keyboard/docs/css/jquery-ui.min.css'),
 			this.file('Keyboard/css/keyboard.css'),
 			this.file('Keyboard/css/keyboard-previewkeyset.css')
 		];
@@ -314,9 +316,8 @@ Module.register("MMM-Keyboard", {
 		var form = document.createElement("form");
 		var inputbox = document.createElement("input");
 		inputbox.setAttribute("type", "text");
-		inputbox.setAttribute("id", "keyboard");
+		inputbox.setAttribute("id", "text");
 		inputbox.setAttribute("placeholder", "Enter text...");
-		//inputbox.setAttribute("class", "keyboard-init-focus");
 		form.appendChild(inputbox);
 		wrapper.appendChild(form);
 		Log.info(this.name + " worked.");
