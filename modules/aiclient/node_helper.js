@@ -18,6 +18,12 @@ module.exports = NodeHelper.create({
 	        res.sendStatus(200);
 	    });
 
+	    this.expressApp.get('/keyboard', function (req, res) {
+	        text = req.query.text
+	        self.sendSocketNotification("KEYBOARD", {"text":text})
+	        res.sendStatus(200);
+	    });
+
 	    this.expressApp.post('/image', function (req, res) {
 	    	var data = "";
    			req.on('data', function(chunk){ data += chunk})

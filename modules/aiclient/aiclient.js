@@ -175,6 +175,15 @@ Module.register("aiclient",{
 			this.imageURL = payload.imageurl
 			this.current_selection = "IMAGE"
 			this.updateDom(this.config.animationSpeed);
+		} else if (notification == "KEYBOARD"){
+			this.current_selection = "KEYBOARD"
+			this.text = payload.text
+			var modules = MM.getModules().withClass('MMM-Keyboard');
+			if (this.text == "enable") {
+				modules[0].show();
+			} else if (this.text = "disable") {
+				modules[0].hide();
+			}
 		} else if (notification == "WEATHER") {
 			this.current_selection = "WEATHER"
 			this.weather = payload
