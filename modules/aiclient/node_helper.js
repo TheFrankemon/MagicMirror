@@ -9,6 +9,7 @@ module.exports = NodeHelper.create({
 		var events = [];
 
 		this.fetchers = [];
+		this.uname = "";
 
 		console.log("Starting node helper for: " + this.name);
 
@@ -82,10 +83,18 @@ module.exports = NodeHelper.create({
 	        self.sendSocketNotification("CLEAR", {});
 	        res.sendStatus(200);
 	    });
+
+	    this.expressApp.get('/uname', function (req, res) {
+		this.uname = "Un dude";
+		res.send({name:this.uname});
+	    });
 	},
 
 	// Subclass socketNotificationReceived received.
 	socketNotificationReceived: function(notification, payload) {
 		console.log("helper received: " + notification)
+		if(notification == "USERNAME") {
+			this.uname = payload.username;
+		}
 	}
 })

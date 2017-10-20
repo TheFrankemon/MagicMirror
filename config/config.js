@@ -7,7 +7,7 @@
 
 var config = {
 	port: 8888,
-
+	ipWhitelist: ["127.0.0.1", "::1", "10.0.0.11"],
 	language: 'es',
 	timeFormat: 24,
 	units: 'metric',

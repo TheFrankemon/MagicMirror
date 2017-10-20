@@ -32,10 +32,17 @@ Module.register("MMM-Keyboard", {
 						"z x c v b n m , . -",
 						"{accept} {space} {cancel}"
 					]
+				},
+				accepted: function(e, keyboard, el) {
+					var username = $('#keyboard').val();
+					Log.log(username);
+					var modules = MM.getModules().withClass('MMM-Keyboard');
+					modules[0].sendNotification("USERNAME", {"username":username});
 				}
 			});
 		});
 		Log.log('jQuery Keyboard successfully loaded!');
+		this.focus = false;
 	},
 
 	// Override dom generator.
@@ -46,9 +53,24 @@ Module.register("MMM-Keyboard", {
 		inputbox.setAttribute("type", "text");
 		inputbox.setAttribute("id", "keyboard");
 		inputbox.setAttribute("placeholder", "Enter text...");
+		if (this.focus) {
+			document.getElementById("keyboard").focus();
+		}
 		form.appendChild(inputbox);
 		wrapper.appendChild(form);
 		Log.info(this.name + " worked.");
 		return wrapper;
+	},
+
+	// Override socket notification handler.
+	notificationReceived: function(notification, payload, sender) {
+		console.log("module received: " + notification)
+		var self = this
+
+		if (notification == "focus") {
+			this.focus = true;
+			Log.info("changed focus");
+			this.updateDom();
+		}
 	}
 });

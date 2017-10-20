@@ -168,21 +168,23 @@ Module.register("aiclient",{
 		var self = this
 
 		if (notification == "STATEMENT"){
-			this.current_selection = "STATEMENT"
-			this.text = payload.text
+			this.current_selection = "STATEMENT";
+			this.text = payload.text;
 			this.updateDom(this.config.animationSpeed);
 		} else if (notification == "IMAGE") {
-			this.imageURL = payload.imageurl
-			this.current_selection = "IMAGE"
+			this.imageURL = payload.imageurl;
+			this.current_selection = "IMAGE";
 			this.updateDom(this.config.animationSpeed);
 		} else if (notification == "KEYBOARD"){
-			this.current_selection = "KEYBOARD"
 			this.text = payload.text
 			var modules = MM.getModules().withClass('MMM-Keyboard');
 			if (this.text == "enable") {
 				modules[0].show();
+				self.sendNotification("focus");
 			} else if (this.text = "disable") {
 				modules[0].hide();
+			} else if (this.text = "check") {
+				
 			}
 		} else if (notification == "WEATHER") {
 			this.current_selection = "WEATHER"
@@ -202,6 +204,13 @@ Module.register("aiclient",{
 			this.current_selection = "HOLIDAYS"
 			this.holiday = payload.holiday
 			this.updateDom(this.config.animationSpeed);
+		}
+	},
+
+	notificationReceived: function(notification, payload, sender) {
+		if (notification == "USERNAME") {
+			console.log("The payload is: " + payload);
+			this.sendSocketNotification(notification, payload);
 		}
 	}
 });
