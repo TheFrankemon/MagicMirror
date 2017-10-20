@@ -205,12 +205,5 @@ Module.register("aiclient",{
 			this.holiday = payload.holiday
 			this.updateDom(this.config.animationSpeed);
 		}
-	},
-
-	notificationReceived: function(notification, payload, sender) {
-		if (notification == "USERNAME") {
-			console.log("The payload is: " + payload);
-			this.sendSocketNotification(notification, payload);
-		}
 	}
 });

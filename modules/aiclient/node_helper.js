@@ -1,15 +1,18 @@
 //node_helper.js
 
+global.uname = "";
+global.setName = function(n) { uname = n; }
+
 var NodeHelper = require("node_helper");
 
 module.exports = NodeHelper.create({
+
 	// Subclass start method.
 	start: function() {
 		var self = this;
 		var events = [];
 
 		this.fetchers = [];
-		this.uname = "";
 
 		console.log("Starting node helper for: " + this.name);
 
@@ -85,16 +88,16 @@ module.exports = NodeHelper.create({
 	    });
 
 	    this.expressApp.get('/uname', function (req, res) {
-		this.uname = "Un dude";
-		res.send({name:this.uname});
+		res.send({name:uname});
 	    });
 	},
 
 	// Subclass socketNotificationReceived received.
 	socketNotificationReceived: function(notification, payload) {
-		console.log("helper received: " + notification)
+		console.log("helper received: " + notification);
 		if(notification == "USERNAME") {
-			this.uname = payload.username;
+			setName(payload.username);
+			console.log("User name is set");
 		}
 	}
 })

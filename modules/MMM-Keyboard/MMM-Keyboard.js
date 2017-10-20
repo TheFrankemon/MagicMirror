@@ -35,9 +35,9 @@ Module.register("MMM-Keyboard", {
 				},
 				accepted: function(e, keyboard, el) {
 					var username = $('#keyboard').val();
-					Log.log(username);
-					var modules = MM.getModules().withClass('MMM-Keyboard');
-					modules[0].sendNotification("USERNAME", {"username":username});
+					Log.log("Username is " + username);
+					var modules = MM.getModules().withClass('aiclient');
+					modules[0].sendSocketNotification("USERNAME", {username:username});
 				}
 			});
 		});
