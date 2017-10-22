@@ -179,10 +179,11 @@ Module.register("aiclient",{
 			this.text = payload.text
 			var modules = MM.getModules().withClass('MMM-Keyboard');
 			if (this.text == "enable") {
-				modules[0].show();
-				self.sendNotification("focus");
+				//modules[0].show();
+				self.sendNotification("show");
 			} else if (this.text = "disable") {
-				modules[0].hide();
+				//modules[0].hide();
+				self.sendNotification("hide");
 			} else if (this.text = "check") {
 				
 			}

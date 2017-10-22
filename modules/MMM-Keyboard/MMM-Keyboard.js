@@ -22,6 +22,19 @@ Module.register("MMM-Keyboard", {
 	},
 
 	start: function() {
+		this.focus = false;
+		this.visible = false;
+	},
+
+	// Override dom generator.
+	getDom: function() {
+		var wrapper = document.createElement("div");
+		var form = document.createElement("form");
+		var inputbox = document.createElement("input");
+		inputbox.setAttribute("type", "text");
+		inputbox.setAttribute("id", "keyboard");
+		inputbox.setAttribute("placeholder", "Enter text...");
+
 		jQuery(function($) {
 			$('#keyboard').keyboard({
 				layout: 'custom',
@@ -42,34 +55,44 @@ Module.register("MMM-Keyboard", {
 			});
 		});
 		Log.log('jQuery Keyboard successfully loaded!');
-		this.focus = false;
-	},
 
-	// Override dom generator.
-	getDom: function() {
-		var wrapper = document.createElement("div");
-		var form = document.createElement("form");
-		var inputbox = document.createElement("input");
-		inputbox.setAttribute("type", "text");
-		inputbox.setAttribute("id", "keyboard");
-		inputbox.setAttribute("placeholder", "Enter text...");
-		if (this.focus) {
-			document.getElementById("keyboard").focus();
-		}
 		form.appendChild(inputbox);
 		wrapper.appendChild(form);
-		Log.info(this.name + " worked.");
+
+		if (this.visible && this.focus) {
+			//document.getElementById("keyboard").style.visibility = "visible";
+			$(document).ready(function(){
+				$("#keyboard").show();
+				$("#keyboard").focus();
+			});
+		} else if (!this.visible && !this.focus) {
+			//document.getElementById("keyboard").style.visibility = "hidden";
+			$(document).ready(function(){
+				$("#keyboard").blur();
+				$("#keyboard").hide();
+			});
+		} else {
+			console.log("Something's weird with the FLAGS")
+		}
+
 		return wrapper;
 	},
 
 	// Override socket notification handler.
 	notificationReceived: function(notification, payload, sender) {
 		console.log("module received: " + notification)
-		var self = this
 
-		if (notification == "focus") {
+		if (notification == "show") {
+			this.visible = true;
+			Log.info("Visible: ON");
 			this.focus = true;
-			Log.info("changed focus");
+			Log.info("Focused: ON");
+			this.updateDom();			
+		} else if (notification == "hide") {
+			this.focus = false;
+			Log.info("Focused: OFF");
+			this.visible = false;
+			Log.info("Visible: OFF");
 			this.updateDom();
 		}
 	}
