@@ -90,6 +90,11 @@ module.exports = NodeHelper.create({
 	    this.expressApp.get('/uname', function (req, res) {
 		res.send({name:uname});
 	    });
+
+	    this.expressApp.get('/unameclear', function (req, res) {
+		uname = ""
+		res.sendStatus(200);
+	    });
 	},
 
 	// Subclass socketNotificationReceived received.
