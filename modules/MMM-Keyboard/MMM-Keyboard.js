@@ -40,9 +40,9 @@ Module.register("MMM-Keyboard", {
 				layout: 'custom',
 				customLayout: {
 					'default': [
-						"q w e r t y u i o p {bksp}",
-						"a s d f g h j k l \u00f1 \u0301",
-						"z x c v b n m , . -",
+						"Q W E R T Y U I O P {bksp}",
+						"A S D F G H J K L \u00f1 \u0301",
+						"Z X C V B N M , . -",
 						"{accept} {space} {cancel}"
 					]
 				},
