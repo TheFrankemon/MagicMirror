@@ -101,7 +101,11 @@ module.exports = NodeHelper.create({
 	socketNotificationReceived: function(notification, payload) {
 		console.log("helper received: " + notification);
 		if(notification == "USERNAME") {
-			setName(payload.username);
+			var text = payload.username;
+			text = text.split(' ').map(function(word) {
+				return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+			}).join(' ');
+			setName(text);
 			console.log("User name is set");
 		}
 	}
