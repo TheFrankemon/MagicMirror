@@ -18,9 +18,7 @@ Module.register("aiclientdebugger",{
 	// Define start sequence.
 	start: function() {
 		Log.log("Starting module: " + this.name);
-
 		this.sendSocketNotification("INITIALIZE", {})
-		
 	},
 
 	// Override dom generator.
@@ -31,7 +29,11 @@ Module.register("aiclientdebugger",{
 			wrapper.innerHTML = "Escuchando...<br/>";
 			//wrapper.innerHTML = "<img src=\"" + this.file("face.gif") + "\" style=\"width:300px;height:300px;\">"
 			wrapper.className = "small bright";
+		} else if (this.recognitionEnabled) {
+			wrapper.innerHTML = "...Cargando...<br/>";
+			wrapper.className = "small bright";
 		}
+
 		return wrapper
 	},
 
@@ -40,9 +42,10 @@ Module.register("aiclientdebugger",{
 		console.log("module received: " + notification)
 		var self = this
 
-		if (notification == "MICROPHONE"){
+		if (notification == "MICROPHONE")
 			this.microphoneEnabled = payload.enabled
-			this.updateDom(this.config.animationSpeed);
-		}
+		else if (notification == "RECOGNITION")
+			this.recognitionEnabled = payload.enabled
+		this.updateDom(this.config.animationSpeed);		
 	}
 });

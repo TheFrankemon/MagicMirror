@@ -7,23 +7,35 @@ module.exports = NodeHelper.create({
 	start: function() {
 		var self = this;
 		var events = [];
-
 		this.fetchers = [];
 
 		console.log("Starting node helper for: " + this.name);
 
-	    this.expressApp.get('/microphone', function (req, res) {
-	    	if (req.query.enabled.toLowerCase() == "true") {
-	    		self.sendSocketNotification("MICROPHONE", {"enabled":true})
-	    	} else if (req.query.enabled.toLowerCase() == "false") {
-	    		self.sendSocketNotification("MICROPHONE", {"enabled":false})
-	    	} else {
-	    		res.sendStatus(400)
-	    		return
-	    	}
+		this.expressApp.get('/microphone', function (req, res) {
+			if (req.query.enabled.toLowerCase() == "true")
+				self.sendSocketNotification("MICROPHONE", {"enabled":true})
+			else if (req.query.enabled.toLowerCase() == "false")
+				self.sendSocketNotification("MICROPHONE", {"enabled":false})
+			else {
+				res.sendStatus(400)
+				return
+			}
 
-	        res.sendStatus(200);
-	    });
+			res.sendStatus(200);
+		});
+
+		this.expressApp.get('/recognition', function (req, res) {
+			if (req.query.enabled.toLowerCase() == "true")
+				self.sendSocketNotification("RECOGNITION", {"enabled":true})
+			else if (req.query.enabled.toLowerCase() == "false")
+				self.sendSocketNotification("RECOGNITION", {"enabled":false})
+			else {
+				res.sendStatus(400)
+				return
+			}
+
+			res.sendStatus(200);
+		});
 	},
 
 	// Subclass socketNotificationReceived received.
