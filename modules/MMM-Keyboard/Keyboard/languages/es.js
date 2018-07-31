@@ -6,7 +6,7 @@ jQuery.keyboard.language.es = {
 	language: 'Espa\u00f1ol (Spanish)',
 	display : {
 		'a'      : '\u2714:Acceptar (Cambio+Inscribir)', // check mark - same action as accept
-		'accept' : 'Acceptar:Acceptar (Cambio+Inscribir)',
+		'accept' : 'Aceptar:Aceptar (Cambio+Inscribir)',
 		'alt'    : 'AltGr:Grafemas Alternativos',
 		'b'      : '\u2190:Retroceso',    // Left arrow (same as &larr;)
 		'bksp'   : 'Bksp:Retroceso',

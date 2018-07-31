@@ -37,6 +37,7 @@ Module.register("MMM-Keyboard", {
 
 		jQuery(function($) {
 			$('#keyboard').keyboard({
+				language: 'es',
 				layout: 'custom',
 				customLayout: {
 					'default': [
