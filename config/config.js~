@@ -18,7 +18,7 @@ var config = {
         position: 'middle_center' // This can be any of the regions.
     },
     {
-    	module: 'aiclientdebugger',
+    	module: 'aiclientstatus',
     	position: 'bottom_right'
     },
 	    {

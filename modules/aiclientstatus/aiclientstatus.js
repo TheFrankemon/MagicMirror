@@ -1,6 +1,6 @@
-//aiclientdebugger.js
+//aiclientstatus.js
 
-Module.register("aiclientdebugger",{
+Module.register("aiclientstatus",{
 
 	// Default module config.
 	defaults: {
