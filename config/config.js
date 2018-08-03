@@ -13,26 +13,26 @@ var config = {
 	units: 'metric',
 
 	modules: [
-	    {
-	        module: 'aiclient',
-	        position: 'middle_center' // This can be any of the regions.
-	    },
-	    {
-	    	module: 'aiclientstatus',
-	    	position: 'bottom_center'
-	    },
-	    {
-		module: 'clock',
-		position: 'bottom_left'
-	    },
-	    {
-	    	module: 'MMM-SimpleLogo',
-	    	position: 'top_bar'
-	    },
-	    {
-		module: 'MMM-Keyboard',
-		position: 'lower_third'
-	    }
+		{
+			module: 'aiclient',
+			position: 'middle_center' // This can be any of the regions.
+		},
+		{
+			module: 'aiclientstatus',
+			position: 'bottom_center'
+		},
+		{
+			module: 'clock',
+			position: 'bottom_left'
+		},
+		{
+			module: 'MMM-SimpleLogo',
+			position: 'top_bar'
+		},
+		{
+			module: 'MMM-Keyboard',
+			position: 'lower_third'
+		}
 	]
 };
 
